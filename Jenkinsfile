@@ -8,22 +8,20 @@ buildProfile = new  org.example.Constants
 pipeline {
     agent any
     stages {
-
-        stage("Build"){
-            steps{
-                echo "Buulding"
+        stage("Build") {
+            steps {
+                echo "Building"
             }
         }
-        stage("Trsting"){
-            steps{
+        stage("Testing") {
+            steps {
                 echo "Testing"
             }
         }
-        stage("Somya Deployment"){
-            steps{
-                echo "Somya Testing"
+        stage("Somya Deployment") {
+            steps {
+                echo "Somya Deployment"
             }
         }
-
     }
 }
