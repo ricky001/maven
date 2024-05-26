@@ -2,9 +2,7 @@
 This is sample Jenkinsfile
 
 */
-buildProfile = new  org.example.Constants
-
-
+//buildProfile = new  org.example.Constants
 pipeline {
     agent any
     stages {
