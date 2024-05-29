@@ -17,6 +17,8 @@ node {
             node('windows_2') {
                 stage("Hello") {
                     echo "Hello From windows_2"
+                    String osName = commonFunctions.getOS()
+                    echo "${osName}"
                 }
             }
         }
