@@ -24,8 +24,10 @@ pipeline{
     stage("After Parallel"){
         steps{
             echo "After Parallel"
+            script{
             String osName = commonFunctions.getOS()
             echo "${osName}"
+            }
     }
     }
 }
