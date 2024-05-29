@@ -1,5 +1,5 @@
 //This is a sample Jenkins File
-@Library["shared-lib"]
+@Library(["shared-lib"])
 pipeline{
 
     agent none
