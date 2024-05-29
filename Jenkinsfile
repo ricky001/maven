@@ -1,25 +1,31 @@
-@Library(["shared-lib"]) _
-node {
+@Library("shared-lib@ORST-211")
+node{
+
+    stage("Git Checkout"){
+        git changelog: false, poll: false, url: 'https://github.com/ricky001/gitlab4j-api.git'
+        
+    }
     parallel(
-        CheckOut: {
-            node('slave_windows_root') {
+
+        Windows Build:{
+
+             node('slave_windows_root') {
                 stage("CheckOut") {
                     echo "Hello World on slave_windows_root"
                 }
-            }
-        },
-        Hello: {
-            node('windows_2') {
+            },
+        Linux Build:{
+                 node('windows_2') {
                 stage("Hello") {
                     echo "Hello From windows_2"
                 }
             }
         }
-    )
 
-    stage("After Parallel") {
-        echo "After Parallel"
-        String osName = commonFunctions.getOS()
-        echo "${osName}"
-    }
+        }
+        
+
+        )
+    
+    
 }
