@@ -4,6 +4,7 @@ pipeline{
 
     agent none
     stages{
+        parallel{
        stage("CheckOut"){
             agent {label "slave_windows_root"}
            steps{
@@ -16,6 +17,11 @@ pipeline{
            steps{
                 echo "Hello From windows_2"
            }
+    }
+        }
+    stage("After Parallel"){
+        steps{
+            echo "After Parallel"
     }
     }
 }
