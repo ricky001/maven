@@ -1,5 +1,5 @@
 //This is a sample Jenkins File
-
+@Library["shared-lib"]
 pipeline{
 
     agent none
@@ -24,6 +24,8 @@ pipeline{
     stage("After Parallel"){
         steps{
             echo "After Parallel"
+            String osName = commonFunctions.getOS()
+            echo "${osName}"
     }
     }
 }
