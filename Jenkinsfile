@@ -17,5 +17,5 @@ pipeline{
                 echo "Hello From windows_2"
            }
     }
-
+    }
 }
