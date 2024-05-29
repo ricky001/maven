@@ -2,7 +2,8 @@
 node {
 
     stage("Git Checkout") {
-        git changelog: false, poll: false, url: 'https://github.com/ricky001/gitlab4j-api.git'
+        //git changelog: false, poll: false, url: 'https://github.com/ricky001/gitlab4j-api.git'
+        gitFunctions.gitClone(url="https://github.com/ricky001/gitlab4j-api.git")
     }
 
     parallel(
