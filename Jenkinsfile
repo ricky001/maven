@@ -13,7 +13,7 @@ node("slave_windows_root"){
                 commonFunctions.createFile("123.txt","My Name is Somya Chawla")
                 commonFunctions.createFile("more.txt","My Name is Divya Chawla")
                 bat "dir"
-                stash name:'file' includes:'123.txt' excludes:'abc.txt'
+                stash name:'file',includes:'123.txt',excludes:'abc.txt'
             }
         },
         "Linux Node":{
