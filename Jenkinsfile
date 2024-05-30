@@ -1,28 +1,27 @@
-@Library("shared-lib@ORST-211") _
-node {
+node("slave_windows_root"){
 
-    stage("Git Checkout") {
-        //git changelog: false, poll: false, url: 'https://github.com/ricky001/gitlab4j-api.git'
+    stage("Git Checkout"){
         gitFunctions.gitClone(url="https://github.com/ricky001/gitlab4j-api.git")
-        helloWorldSimple(dayOfWeek="Sunday",name="Somya")
     }
 
     parallel(
-        "Windows Build": {
-            node('slave_windows_root') {
-                stage("CheckOut") {
-                    echo "Hello World on slave_windows_root"
-                }
+
+        "Windows Node":{
+            stage("Printing Message"){
+                echo "Hello World from Master"
             }
         },
-        "Linux Build": {
-            node('windows_2') {
-                stage("Hello") {
-                    echo "Hello From windows_2"
-                    String osName = commonFunctions.getOS()
+        "Linux Node":{
+            node("windows_2"){
+                stage("Get OS Name"){
+                    def osName=commonFunctions.getOS()
                     echo "${osName}"
                 }
             }
+
         }
     )
+    
+
+
 }
