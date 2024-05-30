@@ -1,8 +1,10 @@
 node("slave_windows_root"){
 
     stage("Git Checkout"){
+        catchError{
         gitFunctions.gitClone(url="https://github.com/ricky001/gitlab4j-api.git")
         bat "ls"
+        }
     }
 
     parallel(
