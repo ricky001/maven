@@ -2,6 +2,7 @@ node("slave_windows_root"){
 
     stage("Git Checkout"){
         gitFunctions.gitClone(url="https://github.com/ricky001/gitlab4j-api.git")
+        bat "ls"
     }
 
     parallel(
@@ -12,7 +13,7 @@ node("slave_windows_root"){
                 commonFunctions.createFile("abc.txt","Hello how are you")
                 commonFunctions.createFile("123.txt","My Name is Somya Chawla")
                 commonFunctions.createFile("more.txt","My Name is Divya Chawla")
-                sh "dir"
+                bat "dir"
                 stash name:'file',includes:'*.txt',excludes:'abc.txt'
             }
         },
