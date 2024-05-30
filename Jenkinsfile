@@ -9,6 +9,9 @@ node("slave_windows_root"){
         "Windows Node":{
             stage("Printing Message"){
                 echo "Hello World from Master"
+                commonFunctions.createFile("abc.txt","Hello how are you")
+                commonFunctions.createFile("123.txt","My Name is Somya Chawla")
+                bat "dir"
             }
         },
         "Linux Node":{
