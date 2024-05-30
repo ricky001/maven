@@ -21,6 +21,7 @@ node("slave_windows_root"){
                 stage("Get OS Name"){
                     def osName=commonFunctions.getOS()
                     echo "${osName}"
+                    sleep(10)
                     unstash 'file'
                 }
             }
