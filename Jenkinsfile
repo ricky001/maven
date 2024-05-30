@@ -1,4 +1,11 @@
 node("slave_windows_root"){
+    properties([
+        parameters([
+                string(name: 'GREETING', defaultValue: 'Hello', description: 'Greeting to use'),
+            choice(name: 'ENVIRONMENT', choices: ['dev', 'test', 'prod'], description: 'Environment to deploy to'),
+            booleanParam(name: 'DEBUG', defaultValue: false, description: 'Enable debug mode')
+            ])
+        ])
 
     stage("Git Checkout"){
         catchError(buildResult:"FAILURE",stageResult:"UNSTABLE"){
