@@ -3,7 +3,7 @@ node("slave_windows_root"){
     stage("Git Checkout"){
         catchError(buildResult:"FAILURE",stageResult:"UNSTABLE"){
         gitFunctions.gitClone(url="https://github.com/ricky001/gitlab4j-api.git")
-        bat "ls"
+        bat "dir"
         }
     }
 
