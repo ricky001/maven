@@ -6,7 +6,7 @@ node("slave_windows_root") {
     stage("Parallel Builds"){
             parallel(
                 "Windows Build":{
-                    node("slave_windows_root"){
+                    node("windows_2"){
                             commonFunctions.createFile("aa.txt","Hey I am Somya running on Windows")
                             commonFunctions.createFile("ab.txt","Hey I am Vicky running on Windows")
                             stash name: 'file',includes:'*.txt'
@@ -14,7 +14,7 @@ node("slave_windows_root") {
 
             },
                 "Linux Build":{
-                    node("windows_2"){
+                    node("slave_windows_root"){
                         sleep(10)
                         unstash 'file'
                     }
