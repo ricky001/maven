@@ -1,43 +1,7 @@
 node("slave_windows_root"){
-    properties([
-        parameters([
-                string(name: 'GREETING', defaultValue: 'Hello', description: 'Greeting to use'),
-            choice(name: 'ENVIRONMENT', choices: ['dev', 'test', 'prod'], description: 'Environment to deploy to'),
-            booleanParam(name: 'DEBUG', defaultValue: false, description: 'Enable debug mode')
-            ])
-        ])
-
-    stage("Git Checkout"){
-        catchError(buildResult:"FAILURE",stageResult:"UNSTABLE"){
-        gitFunctions.gitClone(url="https://github.com/ricky001/gitlab4j-api.git")
-        bat "dir"
-        }
+    stage("Git CheckOut"){
+        catchError("buildResult:"FAILURE",stageResult:"FAILURE")
+        gitFunctions.gitClone(url="https://github.com/ricky001/gitlab4j-api.git1")
     }
-
-    parallel(
-
-        "Windows Node":{
-            stage("Printing Message"){
-                echo "Hello World from Master"
-                commonFunctions.createFile("aa.txt","Hello how are you")
-                commonFunctions.createFile("123.txt","My Name is Somya Chawla")
-                commonFunctions.createFile("more.txt","My Name is Divya Chawla")
-                stash name:'file',includes:'*.txt',excludes:'abc.txt'
-            }
-        },
-        "Linux Node":{
-            node("windows_2"){
-                stage("Get OS Name"){
-                    def osName=commonFunctions.getOS()
-                    echo "${osName}"
-                    sleep(10)
-                    unstash 'file'
-                }
-            }
-
-        }
-    )
-    
-
 
 }
