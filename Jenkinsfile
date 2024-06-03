@@ -15,6 +15,7 @@ node("slave_windows_root") {
             },
                 "Linux Build":{
                     node("windows_2"){
+                        sleep(10)
                         unstash 'file'
                     }
 
