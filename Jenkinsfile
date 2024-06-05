@@ -17,7 +17,7 @@ node("slave_windows_root") {
                     node("slave_windows_root"){
                         sleep(10)
                         unstash 'file'
-                        def filesArray = commonFunctions.detectFiles("*.txt")
+                        def filesArray = commonFunctions.detectFiles(env.WORKSPACE,"*.txt")
                         echo "${filesArray}"
                     }
 
